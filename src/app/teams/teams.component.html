@@ -5,10 +5,10 @@
       <td>Matches</td>
       <td>Points</td>
     </tr>
-      <div *ngFor = "let team of teams">
-        <td>{{ team.name }}</td>
-        <td>{{ team.matches }}</td>
-        <td>{{ team.points }}</td>
-      </div>
+      <tr *ngFor = "let team of teams">
+          <td>{{ team.name }}</td>
+          <td>{{ team.matches }}</td>
+          <td>{{ team.points }}</td>
+      </tr>
   </table>
 </div>
