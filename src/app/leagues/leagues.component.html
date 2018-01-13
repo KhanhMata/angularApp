@@ -1,13 +1,17 @@
+<div class = "leagueInfo" >
 <p>League List:</p>
-<ul class = "leagues">
-  <li *ngFor = "let league of leagues" (click)="onSelect(league)" [class.selected] = "league == selectedLeague">
-    <span class = "badge">{{league.id}}</span>{{league.name}}
-  </li>
-</ul>
+  <ul class = "leagues">
+    <li *ngFor = "let league of leagues" (click)="onSelect(league)" [class.selected] = "league == selectedLeague">
+      <span class = "badge">{{league.id}}</span>{{league.name}}
+    </li>
+  </ul>
+</div>
 
 <div *ngIf = "selectedLeague" >
-  <button (click)="hideLeague()">Hide</button>
-  <h2>{{ selectedLeague.name | uppercase }}: </h2>
-  <p>{{ selectedLeague.description }}</p>
+  <div class = "leagueInfo" >
+    <button (click)="hideLeague()">Hide</button>
+    <h2>{{ selectedLeague.name | uppercase }}: </h2>
+    <p>{{ selectedLeague.description }}</p>
+  </div>
   <app-teams [teams] = "selectedLeague.league_teams" ></app-teams>
 </div>

@@ -22,5 +22,6 @@ export class LeaguesComponent implements OnInit {
   }
 
   hideLeague(): void {
+    this.selectedLeague = null;
   }
 }
