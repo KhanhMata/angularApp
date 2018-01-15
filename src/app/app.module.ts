@@ -6,16 +6,20 @@ import { AppComponent } from './app.component';
 import { LeaguesComponent } from './leagues/leagues.component';
 import { TeamsComponent } from './teams/teams.component';
 import { LeagueService } from './league.service';
+import { AppRoutingModule } from './/app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LeaguesComponent,
-    TeamsComponent
+    TeamsComponent,
+    DashboardComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [LeagueService],
   bootstrap: [AppComponent]
