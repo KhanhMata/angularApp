@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LEAGUES } from '../mock-leagues';
 import { League } from '../league';
+import { LeagueService } from '../league.service';
 
 @Component({
   selector: 'app-leagues',
@@ -9,12 +9,13 @@ import { League } from '../league';
 })
 export class LeaguesComponent implements OnInit {
 
-  leagues = LEAGUES;
+  leagues: League[];
   selectedLeague: League;
 
-  constructor() { }
+  constructor(private leagueService: LeagueService) { }
 
   ngOnInit() {
+    this.getLeague();
   }
 
   onSelect(league: League): void {
@@ -23,5 +24,9 @@ export class LeaguesComponent implements OnInit {
 
   hideLeague(): void {
     this.selectedLeague = null;
+  }
+
+  getLeague(): void {
+    this.leagueService.getLeagues().subscribe(leagues => this.leagues = leagues);
   }
 }
