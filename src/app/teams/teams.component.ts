@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Team } from '../team';
-import { League } from '../league';
 
 @Component({
   selector: 'app-teams',
