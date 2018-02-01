@@ -9,7 +9,7 @@ import { Team } from '../team';
 })
 export class TeamsComponent implements OnInit {
 
-  @Input() team: Team;
+  team: Team;
   @Input() teams: Team[];
 
   constructor() { }

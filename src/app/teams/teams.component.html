@@ -1,14 +1,22 @@
 <div *ngIf = "teams" >
   <table>
     <tr>
+      <td>Position</td>
       <td>Club</td>
-      <td>Matches</td>
+      <td>Played</td>
+      <td>W</td>
+      <td>D</td>
+      <td>L</td>
       <td>Points</td>
     </tr>
-      <tr *ngFor = "let team of teams">
-          <td>{{ team.name }}</td>
+      <tr *ngFor = "let team of teams | sortByPoints; let i = index ">
+          <td>{{ i + 1 }}</td>
+          <td><!-- <img src="../../assets/teams/{{team.name}}.png" height="15" width="15" /> -->{{ team.name }}</td>
           <td>{{ team.matches }}</td>
-          <td>{{ team.points }}</td>
+          <td>{{ team.won }}</td>
+          <td>{{ team.drawn }}</td>
+          <td>{{ team.lost }}</td>
+          <td><b>{{ team.points }}</b></td>
       </tr>
   </table>
 </div>

@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LeaguesComponent } from './leagues/leagues.component';
 import { LeagueService } from './league.service';
 import { TeamsComponent } from './teams/teams.component';
+import { TeamPipe } from './team.pipe';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { TeamsComponent } from './teams/teams.component';
     AppComponent,
     DashboardComponent,
     LeaguesComponent,
-    TeamsComponent
+    TeamsComponent,
+    TeamPipe
   ],
   imports: [
     AppRoutingModule,

@@ -4,5 +4,5 @@ export class League {
   id: number;
   name: string;
   description: string;
-  league_teams: Team[];
+  leagueTeams: Team[];
 }
