@@ -9,18 +9,18 @@
 <div *ngIf="teams">
   <table>
     <tr>
-      <td>Position</td>
-      <td>Club</td>
-      <td>Played</td>
-      <td>GD</td>
-      <td>Points</td>
+      <th width="12%">Position</th>
+      <th width="40%">Club</th>
+      <th width="12%">Played</th>
+      <th width="12%">GD</th>
+      <th width="24%">Points</th>
     </tr>
     <tr *ngFor="let team of teams | sortByPoints; let i = index ">
       <td>{{ i + 1 }}</td>
-      <td>{{ team.name }}</td>
+      <td><b>{{ team.name }}</b></td>
       <td>{{ team.matches }}</td>
       <td>{{ team.goalDifference }}</td>
-      <td>{{ team.points }}</td>
+      <td><b>{{ team.points }}</b></td>
     </tr>
   </table>
 </div>

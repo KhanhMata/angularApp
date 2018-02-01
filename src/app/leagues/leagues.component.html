@@ -9,7 +9,7 @@
 
 <div *ngIf = "selectedLeague" >
   <div class = "leagueInfo" >
-    <button (click)="hideLeague()">Hide</button>
+    <button (click)="hideLeagueInfo()">Hide</button>
     <h2>{{ selectedLeague.name | uppercase }}: </h2>
     <p>{{ selectedLeague.description }}</p>
   </div>

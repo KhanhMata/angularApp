@@ -16,18 +16,18 @@ export class LeaguesComponent implements OnInit {
   constructor(private leagueService: LeagueService) { }
 
   ngOnInit() {
-    this.getLeague();
+    this.getLeagues();
   }
 
   onSelect(league: League): void {
     this.selectedLeague = league;
   }
 
-  hideLeague(): void {
+  hideLeagueInfo(): void {
     this.selectedLeague = null;
   }
 
-  getLeague(): void {
+  getLeagues(): void {
     this.leagueService.getLeagues().subscribe(leagues => this.leagues = leagues);
   }
 }
