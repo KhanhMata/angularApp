@@ -3,23 +3,23 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { LeaguesComponent } from './leagues/leagues.component';
-import { TeamsComponent } from './teams/teams.component';
-import { LeagueService } from './league.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LeaguesComponent } from './leagues/leagues.component';
+import { LeagueService } from './league.service';
+import { TeamsComponent } from './teams/teams.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    DashboardComponent,
     LeaguesComponent,
-    TeamsComponent,
-    DashboardComponent
+    TeamsComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserModule
   ],
   providers: [LeagueService],
   bootstrap: [AppComponent]
