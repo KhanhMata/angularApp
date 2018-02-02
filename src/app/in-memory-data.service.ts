@@ -1,0 +1,125 @@
+import { Injectable } from '@angular/core';
+
+import { InMemoryDbService } from 'angular-in-memory-web-api';
+
+@Injectable()
+export class InMemoryDataService implements InMemoryDbService {
+
+  createDb() {
+    const leagues = [
+      {id: 1, name: 'Premier League', description: 'The top level of the English football league system.'},
+      {id: 2, name: 'La Liga', description: 'The Spanish Primera Liga.'},
+      {id: 3, name: 'Bundesliga', description: 'A professional association football league in Germany. '},
+      {id: 4, name: 'Serie A', description: 'The top of the Italian football league system.'},
+      {id: 5, name: 'Ligue 1', description: 'The top division of the professional football league in France.'}
+    ];
+
+    const teams = [
+      { abbreviation: 'MCI', leagueId: 1, name: 'Man City', matches: 25, won: 22, drawn: 2, lost: 1, goalsFor: 73, goalsAgainst: 18, goalDifference: 55, points: 68},
+      { abbreviation: 'MUN', leagueId: 1, name: 'Man Utd', matches: 25, won: 16, drawn: 5, lost: 4, goalsFor: 49, goalsAgainst: 18, goalDifference: 31, points: 53},
+      { abbreviation: 'CHE', leagueId: 1, name: 'Chelsea', matches: 25, won: 15, drawn: 5, lost: 5, goalsFor: 45, goalsAgainst: 19, goalDifference: 26, points: 50},
+      { abbreviation: 'LIV', leagueId: 1, name: 'Liverpool', matches: 25, won: 14, drawn: 8, lost: 3, goalsFor: 57, goalsAgainst: 29, goalDifference: 28, points: 50},
+      { abbreviation: 'TOT', leagueId: 1, name: 'Tottenham', matches: 25, won: 14, drawn: 6, lost: 5, goalsFor: 49, goalsAgainst: 22, goalDifference: 27, points: 48},
+      { abbreviation: 'ARS', leagueId: 1, name: 'Arsenal', matches: 25, won: 12, drawn: 6, lost: 7, goalsFor: 46, goalsAgainst: 34, goalDifference: 12, points: 42},
+      { abbreviation: 'BUR', leagueId: 1, name: 'Burnley', matches: 25, won: 9, drawn: 8, lost: 8, goalsFor: 20, goalsAgainst: 22, goalDifference: -2, points: 35},
+      { abbreviation: 'LEI', leagueId: 1, name: 'Leicester', matches: 25, won: 9, drawn: 7, lost: 9, goalsFor: 37, goalsAgainst: 34, goalDifference: 3, points: 34},
+      { abbreviation: 'EVE', leagueId: 1, name: 'Everton', matches: 25, won: 8, drawn: 7, lost: 10, goalsFor: 28, goalsAgainst: 40, goalDifference: -12, points: 31},
+      { abbreviation: 'BOU', leagueId: 1, name: 'Bournemouth', matches: 25, won: 7, drawn: 7, lost: 11, goalsFor: 28, goalsAgainst: 36, goalDifference: -8, points: 28},
+      { abbreviation: 'WAT', leagueId: 1, name: 'Watford', matches: 25, won: 7, drawn: 6, lost: 12, goalsFor: 33, goalsAgainst: 44, goalDifference: -11, points: 27},
+      { abbreviation: 'WHU', leagueId: 1, name: 'West Ham', matches: 25, won: 6, drawn: 9, lost: 10, goalsFor: 31, goalsAgainst: 43, goalDifference: -12, points: 27},
+      { abbreviation: 'CRY', leagueId: 1, name: 'Crystal Palace', matches: 25, won: 6, drawn: 8, lost: 11, goalsFor: 23, goalsAgainst: 38, goalDifference: -15, points: 26},
+      { abbreviation: 'NEW', leagueId: 1, name: 'Newcastle', matches: 25, won: 6, drawn: 6, lost: 13, goalsFor: 23, goalsAgainst: 35, goalDifference: -12, points: 24},
+      { abbreviation: 'BRH', leagueId: 1, name: 'Brighton', matches: 25, won: 5, drawn: 9, lost: 11, goalsFor: 18, goalsAgainst: 34, goalDifference: -16, points: 24},
+      { abbreviation: 'STK', leagueId: 1, name: 'Stoke', matches: 25, won: 6, drawn: 6, lost: 13, goalsFor: 25, goalsAgainst: 50, goalDifference: -25, points: 24},
+      { abbreviation: 'HDD', leagueId: 1, name: 'Huddersfield', matches: 25, won: 6, drawn: 6, lost: 13, goalsFor: 19, goalsAgainst: 44, goalDifference: -25, points: 24},
+      { abbreviation: 'SOU', leagueId: 1, name: 'Southampton', matches: 25, won: 4, drawn: 11, lost: 10, goalsFor: 25, goalsAgainst: 36, goalDifference: -11, points: 23},
+      { abbreviation: 'SWA', leagueId: 1, name: 'Swansea', matches: 25, won: 6, drawn: 5, lost: 14, goalsFor: 18, goalsAgainst: 36, goalDifference: -18, points: 23},
+      { abbreviation: 'WBA', leagueId: 1, name: 'West Brom', matches: 25, won: 3, drawn: 11, lost: 11, goalsFor: 19, goalsAgainst: 34, goalDifference: -15, points: 20},
+
+      { abbreviation: 'FCB', leagueId: 2, name: 'Barcelona', matches: 21, won: 18, drawn: 3, lost: 0, goalsFor: 59, goalsAgainst: 10, goalDifference: 49, points: 57},
+      { abbreviation: 'ATM', leagueId: 2, name: 'Atletico Madrid', matches: 21, won: 13, drawn: 7, lost: 1, goalsFor: 32, goalsAgainst: 9, goalDifference: 23, points: 46},
+      { abbreviation: 'VAL', leagueId: 2, name: 'Valencia', matches: 21, won: 12, drawn: 4, lost: 5, goalsFor: 42, goalsAgainst: 25, goalDifference: 17, points: 40},
+      { abbreviation: 'MAD', leagueId: 2, name: 'Real Madrid', matches: 20, won: 11, drawn: 5, lost: 4, goalsFor: 43, goalsAgainst: 19, goalDifference: 24, points: 38},
+      { abbreviation: 'VIL', leagueId: 2, name: 'Villarreal', matches: 21, won: 11, drawn: 4, lost: 6, goalsFor: 32, goalsAgainst: 24, goalDifference: 8, points: 37},
+      { abbreviation: 'SEV', leagueId: 2, name: 'Sevilla', matches: 21, won: 10, drawn: 3, lost: 8, goalsFor: 27, goalsAgainst: 29, goalDifference: -2, points: 33},
+      { abbreviation: 'CLV', leagueId: 2, name: 'Celta', matches: 21, won: 9, drawn: 4, lost: 8, goalsFor: 38, goalsAgainst: 30, goalDifference: 8, points: 31},
+      { abbreviation: 'EIB', leagueId: 2, name: 'Eibar', matches: 21, won: 8, drawn: 5, lost: 8, goalsFor: 26, goalsAgainst: 33, goalDifference: -7, points: 29},
+      { abbreviation: 'GET', leagueId: 2, name: 'Getafe', matches: 21, won: 7, drawn: 7, lost: 7, goalsFor: 26, goalsAgainst: 21, goalDifference: 5, points: 28},
+      { abbreviation: 'GIR', leagueId: 2, name: 'Ginora', matches: 21, won: 7, drawn: 7, lost: 7, goalsFor: 29, goalsAgainst: 29, goalDifference: 0, points: 28},
+      { abbreviation: 'LEG', leagueId: 2, name: 'Leganes', matches: 20, won: 8, drawn: 4, lost: 8, goalsFor: 20, goalsAgainst: 21, goalDifference: -1, points: 28},
+      { abbreviation: 'ATB', leagueId: 2, name: 'Ath. Bilbao', matches: 21, won: 6, drawn: 9, lost: 6, goalsFor: 24, goalsAgainst: 23, goalDifference: 1, points: 27},
+      { abbreviation: 'BET', leagueId: 2, name: 'Betis', matches: 21, won: 8, drawn: 3, lost: 10, goalsFor: 35, goalsAgainst: 44, goalDifference: -9, points: 27},
+      { abbreviation: 'ESY', leagueId: 2, name: 'Espanyol', matches: 21, won: 6, drawn: 6, lost: 9, goalsFor: 18, goalsAgainst: 28, goalDifference: -10, points: 24},
+      { abbreviation: 'SOC', leagueId: 2, name: 'Real Sociedad', matches: 21, won: 6, drawn: 5, lost: 10, goalsFor: 36, goalsAgainst: 40, goalDifference: -4, points: 23},
+      { abbreviation: 'LVT', leagueId: 2, name: 'Levante', matches: 21, won: 3, drawn: 10, lost: 8, goalsFor: 18, goalsAgainst: 30, goalDifference: -12, points: 19},
+      { abbreviation: 'ALV', leagueId: 2, name: 'Alaves', matches: 21, won: 6, drawn: 1, lost: 14, goalsFor: 17, goalsAgainst: 31, goalDifference: -14, points: 19},
+      { abbreviation: 'COR', leagueId: 2, name: 'Deportivo', matches: 21, won: 4, drawn: 5, lost: 12, goalsFor: 24, goalsAgainst: 46, goalDifference: -22, points: 17},
+      { abbreviation: 'LAP', leagueId: 2, name: 'Las Palmas', matches: 21, won: 4, drawn: 2, lost: 15, goalsFor: 16, goalsAgainst: 50, goalDifference: -34, points: 14},
+      { abbreviation: 'MLA', leagueId: 2, name: 'Malaga', matches: 21, won: 3, drawn: 4, lost: 14, goalsFor: 14, goalsAgainst: 34, goalDifference: -20, points: 13},
+
+      { abrreviation: 'BAY', leagueId: 3, name: 'Bayern', matches: 20, won: 16, drawn: 2, lost: 2, goalsFor: 49, goalsAgainst: 16, goalDifference: 33, points: 50},
+      { abrreviation: 'B04', leagueId: 3, name: 'Leverkusen', matches: 20, won: 9, drawn: 7, lost: 4, goalsFor: 41, goalsAgainst: 27, goalDifference: 14, points: 34},
+      { abrreviation: 'S04', leagueId: 3, name: 'Schalke', matches: 20, won: 9, drawn: 7, lost: 4, goalsFor: 32, goalsAgainst: 25, goalDifference: 7, points: 34},
+      { abrreviation: 'SGE', leagueId: 3, name: 'Frankfurt', matches: 20, won: 9, drawn: 6, lost: 5, goalsFor: 26, goalsAgainst: 20, goalDifference: 6, points: 33},
+      { abrreviation: 'RBL', leagueId: 3, name: 'Leipzig', matches: 20, won: 9, drawn: 5, lost: 6, goalsFor: 32, goalsAgainst: 29, goalDifference: 3, points: 32},
+      { abrreviation: 'DOR', leagueId: 3, name: 'Dortmund', matches: 20, won: 8, drawn: 7, lost: 5, goalsFor: 42, goalsAgainst: 27, goalDifference: 15, points: 31},
+      { abrreviation: 'BMG', leagueId: 3, name: 'Gladbach', matches: 20, won: 9, drawn: 4, lost: 7, goalsFor: 30, goalsAgainst: 32, goalDifference: -2, points: 31},
+      { abrreviation: 'AUG', leagueId: 3, name: 'Augsburg', matches: 20, won: 7, drawn: 7, lost: 6, goalsFor: 29, goalsAgainst: 26, goalDifference: 3, points: 28},
+      { abrreviation: 'TSG', leagueId: 3, name: 'Hoffenheim', matches: 20, won: 7, drawn: 6, lost: 7, goalsFor: 31, goalsAgainst: 32, goalDifference: -1, points: 27},
+      { abrreviation: 'HAN', leagueId: 3, name: 'Hannover', matches: 20, won: 7, drawn: 6, lost: 7, goalsFor: 28, goalsAgainst: 30, goalDifference: -2, points: 27},
+      { abrreviation: 'BCS', leagueId: 3, name: 'Hertha', matches: 20, won: 6, drawn: 8, lost: 6, goalsFor: 27, goalsAgainst: 27, goalDifference: 0, points: 26},
+      { abrreviation: 'SCF', leagueId: 3, name: 'Freiburg', matches: 20, won: 5, drawn: 9, lost: 6, goalsFor: 22, goalsAgainst: 35, goalDifference: -13, points: 24},
+      { abrreviation: 'WOB', leagueId: 3, name: 'Wolfsburg', matches: 20, won: 4, drawn: 11, lost: 5, goalsFor: 23, goalsAgainst: 24, goalDifference: -1, points: 23},
+      { abrreviation: 'STU', leagueId: 3, name: 'Stuttgart', matches: 20, won: 6, drawn: 2, lost: 12, goalsFor: 16, goalsAgainst: 26, goalDifference: -10, points: 20},
+      { abrreviation: 'MAI', leagueId: 3, name: 'Mainz', matches: 20, won: 5, drawn: 5, lost: 10, goalsFor: 24, goalsAgainst: 35, goalDifference: -11, points: 20},
+      { abrreviation: 'SVW', leagueId: 3, name: 'Werder Bremen', matches: 20, won: 3, drawn: 8, lost: 9, goalsFor: 16, goalsAgainst: 25, goalDifference: -9, points: 17},
+      { abrreviation: 'HSV', leagueId: 3, name: 'Hamburger', matches: 20, won: 4, drawn: 4, lost: 12, goalsFor: 16, goalsAgainst: 29, goalDifference: -13, points: 16},
+      { abrreviation: 'CGN', leagueId: 3, name: 'Koln', matches: 20, won: 3, drawn: 4, lost: 13, goalsFor: 15, goalsAgainst: 34, goalDifference: -19, points: 13},
+
+      { abrreviation: 'NAP', leagueId: 4, name: 'Napoli', matches: 22, won: 18, drawn: 3, lost: 1, goalsFor: 48, goalsAgainst: 14, goalDifference: 34, points: 57},
+      { abrreviation: 'JUV', leagueId: 4, name: 'Juventus', matches: 22, won: 18, drawn: 2, lost: 2, goalsFor: 52, goalsAgainst: 15, goalDifference: 37, points: 56},
+      { abrreviation: 'LAZ', leagueId: 4, name: 'Lazio', matches: 22, won: 14, drawn: 4, lost: 4, goalsFor: 57, goalsAgainst: 27, goalDifference: 30, points: 46},
+      { abrreviation: 'INT', leagueId: 4, name: 'Inter', matches: 22, won: 12, drawn: 8, lost: 2, goalsFor: 37, goalsAgainst: 17, goalDifference: 20, points: 44},
+      { abrreviation: 'ROM', leagueId: 4, name: 'Roma', matches: 22, won: 12, drawn: 5, lost: 5, goalsFor: 32, goalsAgainst: 17, goalDifference: 15, points: 41},
+      { abrreviation: 'SAM', leagueId: 4, name: 'Sampdoria', matches: 22, won: 11, drawn: 4, lost: 7, goalsFor: 41, goalsAgainst: 31, goalDifference: 10, points: 37},
+      { abrreviation: 'MIL', leagueId: 4, name: 'Milan', matches: 22, won: 10, drawn: 4, lost: 8, goalsFor: 29, goalsAgainst: 29, goalDifference: 0, points: 34},
+      { abrreviation: 'ATT', leagueId: 4, name: 'Atalanta', matches: 22, won: 9, drawn: 6, lost: 7, goalsFor: 34, goalsAgainst: 27, goalDifference: 7, points: 33},
+      { abrreviation: 'UDI', leagueId: 4, name: 'Udinese', matches: 22, won: 10, drawn: 2, lost: 10, goalsFor: 35, goalsAgainst: 31, goalDifference: 4, points: 32},
+      { abrreviation: 'TOR', leagueId: 4, name: 'Torino', matches: 22, won: 7, drawn: 11, lost: 4, goalsFor: 32, goalsAgainst: 28, goalDifference: 4, points: 32},
+      { abrreviation: 'FIO', leagueId: 4, name: 'Fiorentina', matches: 22, won: 7, drawn: 7, lost: 8, goalsFor: 31, goalsAgainst: 28, goalDifference: 3, points: 28},
+      { abrreviation: 'BGN', leagueId: 4, name: 'Bologna', matches: 22, won: 8, drawn: 3, lost: 11, goalsFor: 27, goalsAgainst: 33, goalDifference: -6, points: 27},
+      { abrreviation: 'CHV', leagueId: 4, name: 'Chievo', matches: 22, won: 5, drawn: 7, lost: 10, goalsFor: 21, goalsAgainst: 39, goalDifference: -18, points: 22},
+      { abrreviation: 'SAS', leagueId: 4, name: 'Sassuolo', matches: 22, won: 6, drawn: 4, lost: 12, goalsFor: 14, goalsAgainst: 34, goalDifference: -20, points: 22},
+      { abrreviation: 'GEN', leagueId: 4, name: 'Genoa', matches: 22, won: 5, drawn: 6, lost: 11, goalsFor: 16, goalsAgainst: 24, goalDifference: -8, points: 21},
+      { abrreviation: 'CAG', leagueId: 4, name: 'Cagliari', matches: 22, won: 6, drawn: 3, lost: 13, goalsFor: 20, goalsAgainst: 34, goalDifference: -14, points: 21},
+      { abrreviation: 'CRO', leagueId: 4, name: 'Crotone', matches: 22, won: 5, drawn: 4, lost: 13, goalsFor: 17, goalsAgainst: 39, goalDifference: -22, points: 19},
+      { abrreviation: 'SPA', leagueId: 4, name: 'SPAL', matches: 22, won: 3, drawn: 8, lost: 11, goalsFor: 23, goalsAgainst: 40, goalDifference: -17, points: 17},
+      { abrreviation: 'HEL', leagueId: 4, name: 'Verona', matches: 22, won: 4, drawn: 4, lost: 14, goalsFor: 22, goalsAgainst: 45, goalDifference: -23, points: 16},
+      { abrreviation: 'BEN', leagueId: 4, name: 'Benevento', matches: 22, won: 2, drawn: 1, lost: 19, goalsFor: 13, goalsAgainst: 49, goalDifference: -36, points: 7},
+
+      { abrreviation: 'PSG', leagueId: 5, name: 'PSG', matches: 23, won: 19, drawn: 2, lost: 2, goalsFor: 72, goalsAgainst: 17, goalDifference: 55, points: 59},
+      { abrreviation: 'LYO', leagueId: 5, name: 'Lyon', matches: 23, won: 14, drawn: 6, lost: 3, goalsFor: 52, goalsAgainst: 25, goalDifference: 27, points: 48},
+      { abrreviation: 'OLM', leagueId: 5, name: 'Marseille', matches: 23, won: 14, drawn: 6, lost: 3, goalsFor: 47, goalsAgainst: 24, goalDifference: 23, points: 48},
+      { abrreviation: 'AMO', leagueId: 5, name: 'Monaco', matches: 23, won: 14, drawn: 5, lost: 4, goalsFor: 53, goalsAgainst: 24, goalDifference: 29, points: 47},
+      { abrreviation: 'NAN', leagueId: 5, name: 'Nantes', matches: 23, won: 11, drawn: 4, lost: 8, goalsFor: 22, goalsAgainst: 21, goalDifference: 1, points: 37},
+      { abrreviation: 'NCE', leagueId: 5, name: 'Nice', matches: 23, won: 10, drawn: 4, lost: 9, goalsFor: 29, goalsAgainst: 33, goalDifference: -4, points: 34},
+      { abrreviation: 'MPL', leagueId: 5, name: 'Montpellier', matches: 23, won: 7, drawn: 10, lost: 6, goalsFor: 20, goalsAgainst: 19, goalDifference: 1, points: 31},
+      { abrreviation: 'REN', leagueId: 5, name: 'Rennes', matches: 23, won: 9, drawn: 4, lost: 10, goalsFor: 28, goalsAgainst: 32, goalDifference: -4, points: 31},
+      { abrreviation: 'BOR', leagueId: 5, name: 'Bordeaux', matches: 23, won: 8, drawn: 5, lost: 10, goalsFor: 27, goalsAgainst: 32, goalDifference: -5, points: 29},
+      { abrreviation: 'GUI', leagueId: 5, name: 'Guingamp', matches: 23, won: 8, drawn: 5, lost: 10, goalsFor: 24, goalsAgainst: 32, goalDifference: -8, points: 29},
+      { abrreviation: 'DIJ', leagueId: 5, name: 'Dijon', matches: 23, won: 8, drawn: 4, lost: 11, goalsFor: 33, goalsAgainst: 46, goalDifference: -13, points: 28},
+      { abrreviation: 'STR', leagueId: 5, name: 'Strasbourg', matches: 23, won: 7, drawn: 6, lost: 10, goalsFor: 28, goalsAgainst: 39, goalDifference: -11, points: 27},
+      { abrreviation: 'CAE', leagueId: 5, name: 'Caen', matches: 23, won: 8, drawn: 3, lost: 12, goalsFor: 15, goalsAgainst: 26, goalDifference: -11, points: 27},
+      { abrreviation: 'STE', leagueId: 5, name: 'St-Etienne', matches: 23, won: 7, drawn: 5, lost: 11, goalsFor: 22, goalsAgainst: 38, goalDifference: -16, points: 26},
+      { abrreviation: 'AMI', leagueId: 5, name: 'Amiens', matches: 23, won: 7, drawn: 4, lost: 12, goalsFor: 20, goalsAgainst: 25, goalDifference: -5, points: 25},
+      { abrreviation: 'ANG', leagueId: 5, name: 'Angers', matches: 23, won: 5, drawn: 10, lost: 8, goalsFor: 26, goalsAgainst: 32, goalDifference: -6, points: 25},
+      { abrreviation: 'LIL', leagueId: 5, name: 'Lille', matches: 23, won: 7, drawn: 4, lost: 12, goalsFor: 21, goalsAgainst: 34, goalDifference: -13, points: 25},
+      { abrreviation: 'TRO', leagueId: 5, name: 'Troyes', matches: 23, won: 7, drawn: 3, lost: 13, goalsFor: 22, goalsAgainst: 32, goalDifference: -10, points: 24},
+      { abrreviation: 'TOU', leagueId: 5, name: 'Toulouse', matches: 23, won: 6, drawn: 5, lost: 12, goalsFor: 21, goalsAgainst: 32, goalDifference: -11, points: 23},
+      { abrreviation: 'MTZ', leagueId: 5, name: 'Metz', matches: 23, won: 5, drawn: 3, lost: 15, goalsFor: 20, goalsAgainst: 39, goalDifference: -19, points: 18}
+    ];
+
+    return { leagues, teams };
+  }
+
+}

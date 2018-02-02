@@ -13,7 +13,7 @@
     <h2>{{ selectedLeague.name | uppercase }}: </h2>
     <p>{{ selectedLeague.description }}</p>
   </div>
-  <app-teams [teams] = "selectedLeague.leagueTeams" ></app-teams>
+  <app-teams [leagueId] = "selectedLeague.id" ></app-teams>
 </div>
 
 <nav>

@@ -17,7 +17,7 @@
     </tr>
       <tr *ngFor = "let team of teams | sortByPoints; let i = index ">
           <td>{{ i + 1 }}</td>
-          <td><!-- <img src="../../assets/teams/{{team.name}}.png" height="15" width="15" /> --><b>{{ team.name }}</b></td>
+          <td><!-- <img src="../../assets/teams/{{team.abbreviation}}.png" height="15" width="15" /> --><b>{{ team.name }}</b></td>
           <td>{{ team.matches }}</td>
           <td>{{ team.won }}</td>
           <td>{{ team.drawn }}</td>

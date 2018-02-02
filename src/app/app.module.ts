@@ -1,14 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule }    from '@angular/common/http';
 
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { InMemoryDataService } from './in-memory-data.service';
 import { LeaguesComponent } from './leagues/leagues.component';
-import { LeagueService } from './league.service';
+import { LeagueService } from './leagues/league.service';
 import { TeamsComponent } from './teams/teams.component';
 import { TeamPipe } from './team.pipe';
+import { TeamService } from './teams/team.service';
+import { TeamsOnDashboardComponent } from './teams/teams-on-dashboard/teams-on-dashboard.component';
 
 
 @NgModule({
@@ -17,13 +22,18 @@ import { TeamPipe } from './team.pipe';
     DashboardComponent,
     LeaguesComponent,
     TeamsComponent,
-    TeamPipe
+    TeamPipe,
+    TeamsOnDashboardComponent
   ],
   imports: [
     AppRoutingModule,
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
   ],
-  providers: [LeagueService],
+  providers: [LeagueService, TeamService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

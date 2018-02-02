@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { League } from '../league';
-import { LeagueService } from '../league.service';
+import { LeagueService } from '../leagues/league.service';
 import { Team } from '../team';
 
 @Component({
@@ -13,7 +13,6 @@ export class DashboardComponent implements OnInit {
 
   leagues: League[] = [];
   selectedLeague: League;
-  teams: Team[];
 
   constructor(private leagueService: LeagueService) { }
 
@@ -23,7 +22,6 @@ export class DashboardComponent implements OnInit {
 
   onSelect(league: League): void {
     this.selectedLeague = league;
-    this.teams = league.leagueTeams.slice(0,5);
   }
 
   getLeagues(): void {
