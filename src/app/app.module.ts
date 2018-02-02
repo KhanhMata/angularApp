@@ -10,9 +10,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { InMemoryDataService } from './in-memory-data.service';
 import { LeaguesComponent } from './leagues/leagues.component';
 import { LeagueService } from './leagues/league.service';
-import { TeamsComponent } from './teams/teams.component';
+import { TeamDetailComponent } from './teams/team-detail/team-detail.component';
 import { TeamPipe } from './team.pipe';
 import { TeamService } from './teams/team.service';
+import { TeamsComponent } from './teams/teams.component';
 import { TeamsOnDashboardComponent } from './teams/teams-on-dashboard/teams-on-dashboard.component';
 
 
@@ -23,7 +24,8 @@ import { TeamsOnDashboardComponent } from './teams/teams-on-dashboard/teams-on-d
     LeaguesComponent,
     TeamsComponent,
     TeamPipe,
-    TeamsOnDashboardComponent
+    TeamsOnDashboardComponent,
+    TeamDetailComponent
   ],
   imports: [
     AppRoutingModule,

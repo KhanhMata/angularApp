@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
@@ -13,6 +13,15 @@ export class TeamService {
   private teamsUrl = 'api/teams';
 
   constructor(private http: HttpClient) { }
+
+  getTeam(abbr: string): Observable<Team> {
+    const url = `${this.teamsUrl}/?abbreviation=${abbr}`;
+
+    return this.http.get<Team>(url)
+      .pipe(
+        catchError(this.handleError<Team>('getTeam'))
+      );
+  }
 
   getTeams(): Observable<Team[]> {
     return this.http.get<Team[]>(this.teamsUrl)

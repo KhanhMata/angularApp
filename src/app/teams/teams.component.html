@@ -15,7 +15,7 @@
       <th>Check GD</th>
       <th>Check Points</th> -->
     </tr>
-      <tr *ngFor = "let team of teams | sortByPoints; let i = index ">
+      <tr *ngFor = "let team of teams | sortByPoints; let i = index " routerLink = "/teams/{{ team.abbreviation }}">
           <td>{{ i + 1 }}</td>
           <td><!-- <img src="../../assets/teams/{{team.abbreviation}}.png" height="15" width="15" /> --><b>{{ team.name }}</b></td>
           <td>{{ team.matches }}</td>

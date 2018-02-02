@@ -1,0 +1,39 @@
+<div *ngIf="team">
+  <h2>{{ team.name }}</h2>
+  <h3>Current season:</h3>
+  <table>
+    <tr>
+      <td>Played: </td>
+      <td>{{ team.matches }}</td>
+    </tr>
+    <tr>
+      <td>Won: </td>
+      <td>{{ team.won }}</td>
+    </tr>
+    <tr>
+      <td>Drawn: </td>
+      <td>{{ team.drawn }}</td>
+    </tr>
+    <tr>
+      <td>Lost: </td>
+      <td>{{ team.lost }}</td>
+    </tr>
+    <tr>
+      <td>GF: </td>
+      <td>{{ team.goalsFor }}</td>
+    </tr>
+    <tr>
+      <td>GA: </td>
+      <td>{{ team.goalsAgainst }}</td>
+    </tr>
+    <tr>
+      <td>GD: </td>
+      <td>{{ team.goalDifference }}</td>
+    </tr>
+    <tr>
+      <td>Points: </td>
+      <td>{{ team.points }}</td>
+    </tr>
+  </table>
+</div>
+<button (click)="goBack()">Back</button>
