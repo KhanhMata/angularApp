@@ -7,6 +7,10 @@ import { of } from 'rxjs/observable/of';
 
 import { League } from '../league';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable()
 export class LeagueService {
 
@@ -18,6 +22,13 @@ export class LeagueService {
     return this.http.get<League[]>(this.leaguesUrl)
       .pipe(
         catchError(this.handleError('getLeagues', []))
+      );
+  }
+
+  addLeague(league: League): Observable<League> {
+    return this.http.post<League>(this.leaguesUrl, league, httpOptions)
+      .pipe(
+        catchError(this.handleError<League>('addLeague'))
       );
   }
 
