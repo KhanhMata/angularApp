@@ -1,7 +1,8 @@
 <div class = "leagueInfo" >
 <p>League List:</p>
   <ul class = "leagues">
-    <li *ngFor = "let league of leagues" (click)="onSelect(league)" [class.selected] = "league === selectedLeague">
+    <li *ngFor = "let league of leagues" (click)="onSelect(league)" [class.selected] = "league === selectedLeague"
+      [routerLink] = "league === selectedLeague ? [league.id] : []">
       <span class = "badge">{{league.id}}</span>{{league.name}}
     </li>
   </ul>

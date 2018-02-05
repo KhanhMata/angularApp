@@ -1,0 +1,8 @@
+<div *ngIf = "league" >
+  <div class = "leagueInfo" >
+    <h2>{{ league.name | uppercase }}: </h2>
+    <p>{{ league.description }}</p>
+  </div>
+  <app-teams-in-league [leagueId] = "league.id" ></app-teams-in-league>
+</div>
+<button (click)="goBack()">Back</button>

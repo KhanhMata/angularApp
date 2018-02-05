@@ -1,0 +1,59 @@
+<div *ngIf = "teams" >
+  <table>
+    <tr>
+      <th width="6%">Position</th>
+      <th width="24%">Club</th>
+      <th width="6%">Played</th>
+      <th width="6%">W</th>
+      <th width="6%">D</th>
+      <th width="6%">L</th>
+      <th width="6%">GF</th>
+      <th width="6%">GA</th>
+      <th width="6%">GD</th>
+      <th width="12%">Points</th>
+      <th colspan="2">Actions</th>
+    </tr>
+      <tr *ngFor = "let team of teams | sortByPoints; let i = index ">
+          <td>{{ i + 1 }}</td>
+          <td>
+            <input *ngIf="isEditMode && team.abbreviation === currentTeamAbbr" [(ngModel)]="team.name"/>
+            <b *ngIf="team.abbreviation !== currentTeamAbbr">{{ team.name }}</b>
+          </td>
+          <td><h5>{{ isEditMode ? (team.won*1 + team.drawn*1 + team.lost*1) : team.matches }}</h5></td>
+          <td>
+            <input *ngIf="isEditMode && team.abbreviation === currentTeamAbbr" [(ngModel)]="team.won"/>
+            <h5 *ngIf="team.abbreviation !== currentTeamAbbr">{{ team.won }}</h5>
+          </td>
+          <td>
+            <input *ngIf="isEditMode && team.abbreviation === currentTeamAbbr" [(ngModel)]="team.drawn"/>
+            <h5 *ngIf="team.abbreviation !== currentTeamAbbr">{{ team.drawn }}</h5>
+          </td>
+          <td>
+            <input *ngIf="isEditMode && team.abbreviation === currentTeamAbbr" [(ngModel)]="team.lost"/>
+            <h5 *ngIf="team.abbreviation !== currentTeamAbbr">{{ team.lost }}</h5>
+          </td>
+          <td>
+            <input *ngIf="isEditMode && team.abbreviation === currentTeamAbbr" [(ngModel)]="team.goalsFor"/>
+            <h5 *ngIf="team.abbreviation !== currentTeamAbbr">{{ team.goalsFor }}</h5>
+          </td>
+          <td>
+            <input *ngIf="isEditMode && team.abbreviation === currentTeamAbbr" [(ngModel)]="team.goalsAgainst"/>
+            <h5 *ngIf="team.abbreviation !== currentTeamAbbr">{{ team.goalsAgainst }}</h5>
+          </td>
+          <td><h5>{{ isEditMode ? (team.goalsFor --- team.goalsAgainst) : team.goalDifference }}</h5></td>
+          <td><b>{{ isEditMode ? (team.won*3 + team.drawn*1) : team.points }}</b></td>
+          <td width="8%" [hidden]="isEditMode && team.abbreviation === currentTeamAbbr">
+            <a (click)="changeEditMode(team.abbreviation)">Edit</a>
+          </td>
+          <td width="8%" [hidden]="isEditMode && team.abbreviation === currentTeamAbbr">
+            <a (click)="onDelete(team.id)">Delete</a>
+          </td>
+          <td width="8%" [hidden]="!isEditMode || team.abbreviation !== currentTeamAbbr">
+            <a (click)="onSave(team)">Save</a>
+          </td>
+          <td width="8%" [hidden]="!isEditMode || team.abbreviation !== currentTeamAbbr">
+            <a (click)="changeEditMode()">Cancel</a>
+          </td>
+      </tr>
+  </table>
+</div>

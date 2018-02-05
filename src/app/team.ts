@@ -1,4 +1,5 @@
 export class Team {
+  id: number;
   abbreviation: string;
   leagueId: number;
   name: string;

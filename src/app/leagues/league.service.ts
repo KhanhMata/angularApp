@@ -18,6 +18,13 @@ export class LeagueService {
 
   constructor(private http: HttpClient) { }
 
+  getLeague(id: number): Observable<League> {
+    return this.http.get<League>(`${this.leaguesUrl}/${id}`)
+      .pipe(
+        catchError(this.handleError<League>('getLeague'))
+      );
+  }
+
   getLeagues(): Observable<League[]> {
     return this.http.get<League[]>(this.leaguesUrl)
       .pipe(

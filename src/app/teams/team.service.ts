@@ -7,6 +7,10 @@ import { of } from 'rxjs/observable/of';
 
 import { Team } from '../team';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable()
 export class TeamService {
 
@@ -36,6 +40,30 @@ export class TeamService {
     return this.http.get<Team[]>(url)
       .pipe(
         catchError(this.handleError('getLeagueTeams', []))
+      );
+  }
+
+  updateTeam(team: Team): Observable<any> {
+    const url = `${this.teamsUrl}/?abbreviation=${team.abbreviation}`;
+
+    return this.http.put(url, team, httpOptions)
+      .pipe(
+        catchError(this.handleError('updateTeam'))
+      );
+  }
+
+  updateDerivedData(team: Team): void {
+    team.matches = team.won*1 + team.drawn*1 + team.lost*1;
+    team.goalDifference = team.goalsFor*1 - team.goalsAgainst*1;
+    team.points = team.won*3 + team.drawn*1;
+  }
+
+  deleteTeam(id: number): Observable<Team> {
+    const url = `${this.teamsUrl}/${id}`;
+
+    return this.http.delete<Team>(url, httpOptions)
+      .pipe(
+        catchError(this.handleError<Team>('deleteTeam'))
       );
   }
 
