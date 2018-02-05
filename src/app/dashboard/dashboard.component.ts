@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { League } from '../league';
 import { LeagueService } from '../leagues/league.service';
-import { Team } from '../team';
 
 @Component({
   selector: 'app-dashboard',

@@ -1,15 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { LeaguesComponent } from './leagues/leagues.component';
-import { TeamDetailComponent } from './teams/team-detail/team-detail.component';
-
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'leagues', component: LeaguesComponent },
-  { path: 'teams/:abbr', component: TeamDetailComponent}
+  { path: 'dashboard', loadChildren: 'app/dashboard/dashboard.module#DashboardModule' },
+  { path: 'leagues', loadChildren: 'app/leagues/leagues.module#LeaguesModule' },
+  { path: 'teams', loadChildren: 'app/teams/teams.module#TeamsModule' }
 ];
 
 @NgModule({
