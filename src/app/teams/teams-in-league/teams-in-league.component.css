@@ -1,13 +1,13 @@
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 80%;
+    width: 60%;
     margin: auto;
 }
 
 td, th {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 5px;
 }
 
 tr:nth-child(even){background-color: #f2f2f2;}
@@ -29,4 +29,8 @@ input {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+}
+
+.add-more-team {
+    padding-left: 20%;
 }

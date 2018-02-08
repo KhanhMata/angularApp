@@ -1,7 +1,7 @@
 <h3>Top Leagues</h3>
 <div class="grid grid-pad">
-  <a *ngFor="let league of leagues" class="col-1-5">
-    <div class="module league" (click)="onSelect(league)" [class.selected] = "league === selectedLeague">
+  <a *ngFor="let league of leagues" [@flyIn] class="col-1-5">
+    <div class="module league" [@selectedLeague]="league === selectedLeague" (click)="onSelect(league)" [class.selected] = "league === selectedLeague">
       <h4>{{league.name}}</h4>
     </div>
   </a>

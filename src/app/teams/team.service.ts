@@ -18,6 +18,22 @@ export class TeamService {
 
   constructor(private http: HttpClient) { }
 
+  addTeam(team: Team): Observable<Team> {
+    return this.http.post<Team>(this.teamsUrl, team, httpOptions)
+      .pipe(
+        catchError(this.handleError<Team>('addTeam'))
+      );
+  }
+
+  fillDefaultValue(team: Team): void {
+    team.won = 0;
+    team.drawn = 0;
+    team.lost = 0;
+    team.goalsFor = 0;
+    team.goalsAgainst = 0;
+    this.updateDerivedData(team);
+  }
+
   getTeam(abbr: string): Observable<Team> {
     const url = `${this.teamsUrl}/?abbreviation=${abbr}`;
 

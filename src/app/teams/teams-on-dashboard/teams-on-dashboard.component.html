@@ -7,7 +7,7 @@
       <th width="12%">GD</th>
       <th width="24%">Points</th>
     </tr>
-    <tr *ngFor="let team of teams | sortByPoints; let i = index ">
+    <tr *ngFor="let team of teams | sortByPoints; let i = index " [@flyInOut]>
       <td>{{ i + 1 }}</td>
       <td><b>{{ team.name }}</b></td>
       <td>{{ team.matches }}</td>

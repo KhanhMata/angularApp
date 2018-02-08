@@ -11,4 +11,6 @@ export class Team {
   goalsAgainst: number;
   goalDifference: number;
   points: number;
+
+  constructor(abbreviation, name) { }
 }
